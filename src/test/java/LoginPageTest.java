@@ -1,4 +1,4 @@
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * Created by Анастасия Цыбулько on 08.03.2017.

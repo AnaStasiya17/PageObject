@@ -54,22 +54,17 @@ public class LoginPage {
 
     public void sendMessage() throws InterruptedException {
 
-        driver.findElement(By.id(LOGIN_ID)).sendKeys(LOGIN);
-        driver.findElement(By.id("next")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.id(PASSWORD_ID)).sendKeys(PASSWORD);
-        driver.findElement(By.id("signIn")).click();
-        Thread.sleep(9000);
-        driver.findElement(By.cssSelector(".T-I-KE")).click();
         Thread.sleep(4000);
-        driver.findElement(By.cssSelector("#\\:83")).sendKeys(LOGIN);
-        driver.findElement(By.cssSelector("#\\:7s")).sendKeys(TITLE);
-        driver.findElement(By.cssSelector("#\\:8u")).sendKeys(BODY);
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("#\\:7i")).click();
-        Thread.sleep(5000);
+        driver.findElement(By.xpath("//div[text() = \"НАПИСАТЬ\"]")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//textarea[@aria-label='Кому']")).sendKeys(LOGIN);
+        driver.findElement(By.xpath("//input[@placeholder='Тема']")).sendKeys(TITLE);
+        driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).sendKeys(BODY);
+        Thread.sleep(1000);
+            driver.findElement(By.xpath("//div[text() = 'Отправить']")).click();
+        Thread.sleep(3000);
 
-        if (driver.findElement(By.cssSelector(".b8 > div:nth-child(1) > div:nth-child(2)")).getText().equals("Письмо отправлено. Просмотреть сообщение")) {
+        if (driver.findElement(By.xpath("//div[@class='vh']")).getText().equals("Письмо отправлено. Просмотреть сообщение")) {
             System.out.println("Письмо отправлено. Просмотреть сообщение");
         } else {
             System.out.println("Письмо не отправлено");
